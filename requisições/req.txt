@@ -1,0 +1,61 @@
+1.0. Requisições do CEO
+
+1.1. Gostaria de chegar de manã na minha mesa e ter um lugar único onde eu possa observar o portifólio da House Rocket. Nesse portifólio, eu tenho Interesse:
+
+	1. Filtros dos imóveis por um ou várias regiões.
+	2. Escolher uma ou mais  variáveis para visualizar.
+	3. Observar o número total de imóveis, a  média de preço, a média da sala de estar e também a média do  preço por metro quadrado em cada um dos códigos postais.
+	4. Analisar cada uma das colunas de um modo mais descito.
+	5. Um mapa com a densidade de portifólio por região e também densidade de preço.
+	6. Checar a variação anual e diária de preço.
+	7. Conferir a  distribuição dos imóveis por:
+		-Preço, Quartos, Banheiros, Andares, Vista para Água.
+
+2.0.  Planejamento da Solução
+	2.1. Produto Final
+		-Um Link para Acessar o Dashboard.
+
+	2.2. Ferramentas
+		-Python 3.8
+
+	2.3. Processo
+		2.3.1. Filtar Imóveis
+			- Objetivo: Visualizar Imóveis por código postal.
+			- Ação do User: Digitar um ou mais código desejado.
+			- Visualização: Uma tabela com todos os Atributos e filtrada por código postal.
+			
+
+		2.3.2. Número total de imóveis.
+			- Objetivo: Visualizar as médias de algumas métricas por região.
+			- Ação do User: Digitar as Métricas;
+			- Visualização: Uma Tabela com todas as métricas.
+			
+			
+		2.3.3. Analisar cada uma das colunas.
+			- Objetivo: Visualizar as métricas descritivas de cadas atributos.
+			- Ação do User: Digitar as Métricas;
+			- Visualização: Uma Tabela com todas as métricas.
+			
+			
+		2.3.4 Mapa com Densidade.
+			- Objetivo: Densidade deportifólio no mapa.
+			- Ação do User: Nenhuma.
+			- Visualização: Mapa visual com as Densidades.
+			
+			
+		2.3.5 Variação anual de preço.
+			- Objetivo: Visualizar um gráfico de barras dos e preço.
+			- Ação do User: Nenhuma.
+			- Visualização: Gráfico de  barra / linha dos preços.
+			
+			
+		2.3.6 Variação anual de preço.
+			- Objetivo: Visualizar um gráfico de barras dos e preço.
+			- Ação do User: Nenhuma.
+			- Visualização: Gráfico de  barra / linha dos preços.
+			
+		2.3.6 Distribuição.
+			- Objetivo: Observar as distribuições dos requisitos.
+			- Ação do User: Filtrar os requisitos.
+			- Visualização: Histograma com os Requisitos.
+		  
