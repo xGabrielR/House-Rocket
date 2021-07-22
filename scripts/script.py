@@ -6,12 +6,14 @@ import streamlit as st
 import folium    as fl
 import plotly.express as px
 
-from datetime import datetime
+from datetime         import datetime
 from streamlit_folium import folium_static
 from folium.plugins   import MarkerCluster
 
+
 # Set Wide Page (Show at streamlit app)
 st.set_page_config( layout='wide' )
+
 
 @st.cache( allow_output_mutation=True )
 def getData(path):
@@ -25,103 +27,115 @@ def getGeoData(url):
     
     return gf
 
+
 def setFeature(df_raw):
 	df_raw['price_m2'] = df_raw['price'] / df_raw['sqft_lot']
 
-	cols = ['sqft_living15', 'sqft_lot15']
+	cols   = ['sqft_living15', 'sqft_lot15']
 	df_raw = df_raw.drop( cols, axis=1 )
 	
+	df_raw['date'] = pd.to_datetime( df_raw['date'] ).dt.strftime('%Y-%m-%d')
+	
 	return df_raw
+	
 
 def overviewData(df_raw):
-	fill_attributes = st.sidebar.multiselect( 'Select Filters', df_raw.columns )
-	fill_zipcode = st.sidebar.multiselect('Enter Zipcode', df_raw['zipcode'].unique() )
+	df_fill = df_raw.copy()
+	
+	fill_attributes = st.sidebar.multiselect( 'Select Filters', df_fill.columns )
+	fill_zipcode    = st.sidebar.multiselect('Enter Zipcode', df_fill['zipcode'].unique() )
 
-
-	st.title('Data Overview')
 
 	# Attributes + Zipcode = Select Lines and Columns
 	# Attributes = Select Columns
 	# Zipcode = Select Lines
 	# Null + Null = Return Original Dataset
 
-
 	if ( fill_zipcode != [] ) & ( fill_attributes != [] ):
-	    df_raw = df_raw.loc[df_raw['zipcode'].isin( fill_zipcode ), fill_attributes]
+	    df_fill = df_fill.loc[df_fill['zipcode'].isin( fill_zipcode ), fill_attributes]
 
 	elif ( fill_zipcode != [] ) & ( fill_attributes == [] ):
-	    df_raw = df_raw.loc[df_raw['zipcode'].isin( fill_zipcode ), : ]
+	    df_fill = df_fill.loc[df_fill['zipcode'].isin( fill_zipcode ), : ]
 
-	elif ( fill_zipcode == [] )& ( fill_attributes != []):
-	    df_raw = df_raw.loc[:, fill_attributes ]
+	elif ( fill_zipcode == [] ) & ( fill_attributes != []):
+	    df_fill = df_fill.loc[:, fill_attributes ]
 
 	else:
-	    df_raw = df_raw.copy()
-
-
-	st.write( fill_attributes )
-	st.write( fill_zipcode )
-
-
-	st.write(df_raw)
+	    df_fill = df_fill.copy()
+	    
 
 	# Avg Metrics
-	df1 = df_raw[['id', 'zipcode']].groupby('zipcode').count().reset_index()
+	df1 = df_raw[['id', 'zipcode']].groupby('zipcode').mean().reset_index()
 	df2 = df_raw[['price', 'zipcode']].groupby('zipcode').mean().reset_index()
 	df3 = df_raw[['sqft_living', 'zipcode']].groupby('zipcode').mean().reset_index()
 	df4 = df_raw[['price_m2', 'zipcode']].groupby('zipcode').mean().reset_index()
 
-	c1, c2 = st.beta_columns((1, 1))
-
-	# Merge Metrics
+	#   -----> Merge Metrics
 	m1 = pd.merge( df1, df2, on='zipcode', how='inner' )
 	m2 = pd.merge( m1, df3, on='zipcode', how='inner' )
-	df = pd.merge( m2, df4, on='zipcode', how='inner' )
+	df_metrics = pd.merge( m2, df4, on='zipcode', how='inner' )
 
-	c1.header('Average Values')
-	c1.write( df, heigh=600 )
-
-	# Statistic Descriptive
+	#  -----> Statistic Descriptive
 	num_att = df_raw.select_dtypes(include=['int64', 'float64'])
-	mean = pd.DataFrame( num_att.apply( np.mean ) )
-	median = pd.DataFrame(num_att.apply( np.median ) )
-	std = pd.DataFrame( num_att.apply( np.std ))
-	max_ = pd.DataFrame( num_att.apply( np.max ) )
-	min_ = pd.DataFrame( num_att.apply( np.min ) )
+	mean    = pd.DataFrame( num_att.apply( np.mean ) )
+	median  = pd.DataFrame( num_att.apply( np.median ) )
+	std     = pd.DataFrame( num_att.apply( np.std ) )
+	max_    = pd.DataFrame( num_att.apply( np.max ) )
+	min_    = pd.DataFrame( num_att.apply( np.min ) )
 
-	df1 = pd.concat([ max_, min_, mean, median, std ], axis=1 ).reset_index()
+	df1 = pd.concat( [ max_, min_, mean, median, std ], axis=1 ).reset_index()
 	df1.columns = ['attributes', 'max', 'min', 'mean', 'median', 'std']
+
+
+	#  -----> Titles
+	st.title('➫ Data Overview')
+	st.subheader('Selected Filters')
+	
+	st.write( fill_attributes )
+	st.write( fill_zipcode )
+	
+	st.write( df_fill )
+
+	c1, c2 = st.beta_columns((1, 1))
+	
+	c1.header('Average Values')
+	c1.write( df_metrics, heigh=600 )
 
 	c2.header('Statistic Descriptive')
 	c2.dataframe( df1, height=300 )
-	
+
 	return None
 	
 
-def densityMap(df_raw, gf):
-	st.title('Region Overview')
+def densityMaps(df_raw, gf):
+	st.title('  ')
+	st.title('➫ Region Overview')
 
 	c1, c2 = st.beta_columns((1, 1))
 	c1.header('Density Map')
 
-	df = df_raw.sample(10)
+	df = df_raw.sample(4500)
 
-	# Base Map - Folium
+	# ----> Base Map - Folium
 
 	density_map = fl.Map( location=[df_raw['lat'].mean(), 
 		              df_raw['long'].mean()], 
 		              default_zoom_start=15 )
 
 	marker_cluster = MarkerCluster().add_to(density_map)
+	
 	for name, row in df.iterrows():
 	    fl.Marker( [row['lat'], row['long']],
-		    popup='Sold R${0} on: {1}, Sqft: {2}, Bedrooms: {3}'.format( row['price'], row['date'], row['sqft_living'], row['bedrooms'])).add_to(marker_cluster)
+		    popup='Sold R${0} on: {1}, Sqft: {2}, Bedrooms: {3}'.format( row['price'], 
+		    								   row['date'], 
+		    								   row['sqft_living'], 
+		    								   row['bedrooms'] ) ).add_to(marker_cluster)
 
 	with c1:
 	    folium_static(density_map)
 
 
-	# Region Price Map
+	# ----> Region Price Map
 
 	c2.header('Price Density')
 
@@ -136,28 +150,27 @@ def densityMap(df_raw, gf):
 
 	region_map.choropleth( data = df,
 		               geo_data=gf,
-		               columns=['ZIP', 'PRICE'],
-		               key_on='feature.properties.ZIP',
+		               columns =['ZIP', 'PRICE'],
+		               key_on  ='feature.properties.ZIP',
 		               fill_color='YlOrRd',
 		               fill_opacity=0.7,
 		               line_opacity=0.2,
-		               legend_name='AVG PRICE')
+		               legend_name ='AVG PRICE')
 
 	with c2:
 	    folium_static(region_map)
+	
 
 	return None
 
 
 def commercialCategory(df_raw):
-	st.sidebar.title('Commercial Options')
+	st.title('  ')
+	st.sidebar.title('➫ Commercial Options')
 	st.title('Commercial Attributes')
-
-	df_raw['date'] = pd.to_datetime( df_raw['date'] ).dt.strftime('%Y-%m-%d')
 
 	# Average Price per Year
 	st.sidebar.subheader('Max Year Filter')
-
 	st.header('Average Price per Year Built')
 
 	# Filters
@@ -190,8 +203,7 @@ def commercialCategory(df_raw):
 	fig = px.line( datePrice, x='date', y='price' )
 	st.plotly_chart( fig, use_container_width=True )
 
-	# Histogram's
-	# -----------------------
+	# -----> Histogram's
 	st.header('Price Distribuition')
 	st.sidebar.subheader('Select Max Price')
 
@@ -206,17 +218,17 @@ def commercialCategory(df_raw):
 	fig = px.histogram( dfp, x='price', nbins=50 )
 	st.plotly_chart( fig, use_width_container=True )
 
+
 	return None
 	
 
 def otherCategory(df_raw):
 	st.sidebar.title('Attributes Options')
 
-	fill_bed = st.sidebar.selectbox( 'Max Number of Bedrooms', sorted( set( df_raw['bedrooms'].unique() ) ) )
-
+	fill_bed  = st.sidebar.selectbox( 'Max Number of Bedrooms', sorted( set( df_raw['bedrooms'].unique() ) ) )
 	fill_bath = st.sidebar.selectbox( 'Max Number of Bathrooms', sorted ( set( df_raw['bathrooms'].unique() ) ) )
 
-	st.beta_columns(2)
+	c1, c2 = st.beta_columns(2)
 
 	# Bedrooms
 	c1.header('Houses per Bedrooms')
@@ -252,12 +264,14 @@ def otherCategory(df_raw):
 
 	fig = px.histogram( dfw, x='waterfront', nbins=5 )
 	c2.plotly_chart( fig, use_width_container=True )
+	
+	st.sidebar.info('For bugs fixes, or any new filter, just call me, rg, Gabriel.')
 
 
 	return None
 
 
-def __name__ == '__main__':
+if __name__ == '__main__':
 	# Data Extraction
 	path = "../data/kc_house_data.csv"
 	url = "https://opendata.arcgis.com/datasets/83fc2e72903343aabff6de8cb445b81c_2.geojson"
