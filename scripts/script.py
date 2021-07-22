@@ -3,6 +3,8 @@ import numpy     as np
 import streamlit as st
 import folium    as fl 
 from streamlit_folium import folium_static
+from folium.plugins   import MarkerCluster
+
 
 # Set Wide Page (Show at streamlit app)
 st.set_page_config( layout='wide' )
@@ -22,6 +24,7 @@ df_raw['price_m2'] = df_raw['price'] / df_raw['sqft_lot']
 cols = ['sqft_living15', 'sqft_lot15']
 df_raw = df_raw.drop( cols, axis=1 )
 
+#df_raw = pd.to_datetime(df_raw['date'])
 
 # --------------------------
 # Data Overview
@@ -104,5 +107,27 @@ df = df_raw.sample(10)
 density_map = fl.Map( location=[df_raw['lat'].mean(), 
                       df_raw['long'].mean()], 
                       default_zoom_start=15 )
+
+marker_cluster = MarkerCluster().add_to(density_map)
+for name, row in df.iterrows():
+    fl.Marker( [row['lat'], row['long']],
+            popup='Sold R${0} on: {1}, Sqft: {2}, Bedrooms: {3}'.format( row['price'], row['date'], row['sqft_living'], row['bedrooms'])).add_to(marker_cluster)
+
 with c1:
     folium_static(density_map)
+
+
+# Region Price Map
+
+c2.header('Price Density')
+
+df = df_raw[['price', 'zipcode']].groupby('zipcode').mean().reset_index()
+df.columns = ['ZIP', 'PRICE']
+
+df = df.sample( 10 )
+
+region_map = fl.Map( location=[df_raw['lat'].mean(), 
+                     df_raw['long'].mean() ], 
+                     default_zoom_start=15 )
+with c2:
+    folium_static(region_map)
