@@ -1,5 +1,7 @@
 # ★ House Rocket Insight's Project
 
+![Sem título](https://user-images.githubusercontent.com/75986085/126676350-7000e56f-8fac-4fbc-b766-4c00ab2301a2.png)
+
 <h2>1. Bussines Problem</h2>
 <p>CEO requested several filters to be able to see how the company is doing!</p>
 
