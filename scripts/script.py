@@ -254,7 +254,7 @@ def otherCategory(df_raw):
 	c2.plotly_chart( fig, use_width_container=True )
 
 
-return None
+	return None
 
 
 def __name__ == '__main__':
