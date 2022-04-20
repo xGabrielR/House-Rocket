@@ -38,7 +38,7 @@
   <li>YoY price of properties is approximately 5%.</li>
 </ol>
 
-<h2>3. CEO Geral Process</h2>
+<!-- <h2>3. CEO Geral Process</h2>
 <ol>
   <li>Filter data with Zipcodes</li>
     <ul>
@@ -66,4 +66,4 @@
     <ul>
       <li>Histogram with all CEO request attributes.</li>
     </ul>
-</ol>
+</ol> -->
