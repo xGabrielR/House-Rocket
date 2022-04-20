@@ -2,6 +2,17 @@
 
 ![Sem título](https://user-images.githubusercontent.com/75986085/126676350-7000e56f-8fac-4fbc-b766-4c00ab2301a2.png)
 
+<h2>Summary</h2>
+<hr>
+
+- [0. Bussiness Problem](#0-bussiness-problem)
+  - [0.1. What is a Marketplace](#01-what-is-a-marketplace)
+  
+- [1. Solution Strategy](#1-solution-strategy)
+  - [1.1. First CRISP Cycle](#11-first-crisp-cycle)
+
+- [2. Exploratory Data Analysis](#2-exploratory-data-analysis)
+
 <h2>0. Bussiness Problem</h2>
 <hr>
 <p>House Rocket bussiness model is purchasing & reselling properties located on Seattle USA on digital app..</p>
@@ -37,7 +48,7 @@ Their main strategy is to buy homes in great locations at low prices and then la
   </dl>
 </ul>
 
-<h2>3. EDA Insight's</h2>
+<h2>3. Exploratory Data Analysis</h2>
 <p>Some insight's to CEO during the EDA and Data Clearing.</p>
 <ol>
   <li>Waterfront properties are approximately 30% more expensive than average.</li>
