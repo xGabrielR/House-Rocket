@@ -41,7 +41,20 @@ Their main strategy is to buy homes in great locations at low prices and then la
 <p>Some insight's to CEO during the EDA and Data Clearing.</p>
 <ol>
   <li>Waterfront properties are approximately 30% more expensive than average.</li>
+  
+![waterfront](https://user-images.githubusercontent.com/75986085/164233298-af60d3c6-6194-42cb-8498-35fb6f042b17.png)
+
+  
   <li>With more than two floors, properties are approximately 5% more expensives than average.</li>
-  <li>YoY price of properties is approximately 5%.</li>
+  
+  ////
+  
+  <li>YoY and MoM price of properties is approximately 0%. Houses Pricer do not get more expensiver per year.</li>
+  
+![month](https://user-images.githubusercontent.com/75986085/164233408-1e212485-d31b-47a0-a9ec-04f34ec19346.png)
+
+![year](https://user-images.githubusercontent.com/75986085/164233446-54be2ba8-23f2-4a3a-a277-08230361beee.png)
+
+  
 </ol>
 
