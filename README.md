@@ -31,7 +31,7 @@ Their main strategy is to buy homes in great locations at low prices and then la
 
 <h2>1. Solution Strategy</h2>
 <hr>
-<p>On First Crisp Cycle.</p>
+<h3>1.1. First CRISP Cycle.</h3>
 <p>CEO requested several filters to be able to see how the company is doing!</p>
 <ul>
   <dl>
@@ -48,7 +48,7 @@ Their main strategy is to buy homes in great locations at low prices and then la
   </dl>
 </ul>
 
-<h2>3. Exploratory Data Analysis</h2>
+<h2>2. Exploratory Data Analysis</h2>
 <p>Some insight's to CEO during the EDA and Data Clearing.</p>
 <ol>
   <li>Waterfront properties are approximately 30% more expensive than average.</li>
