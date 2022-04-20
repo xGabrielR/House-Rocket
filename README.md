@@ -2,35 +2,42 @@
 
 ![Sem título](https://user-images.githubusercontent.com/75986085/126676350-7000e56f-8fac-4fbc-b766-4c00ab2301a2.png)
 
-<h2>0. Introduction</h2>
-<p>House Rocket bussiness model is purchasing & reselling properties located on Seattle USA on digital app. The request is a complete dashboard of portfolios the dashboard contains some filters like zipcode, price, bedrooms, bathrooms and contains a two maps, one with price density and other with portfolio locations with some characteristics for better decisions.</p>
+<h2>0. Bussiness Problem</h2>
+<hr>
+<p>House Rocket bussiness model is purchasing & reselling properties located on Seattle USA on digital app..</p>
+<p>The CEO of House Rocket wants to maximize the company's revenue by finding good business opportunities.
+Their main strategy is to buy homes in great locations at low prices and then later resell them at higher prices. The greater the difference between buying and selling, the greater the company's profit and therefore the greater its revenue.</p>
+<p>However, the houses have many examples that make our inspiration and examples and more attractive can also influence the examples. You need to answer some questions</p>
 
-<h2>1. Bussines Problem</h2>
+> *Which houses should the House Rocket CEO buy and at what purchase price?*
+> *Once the house is in the company's possession, when is the best time to sell it and what would the sale price be?*
+> *Should House Rocket do a renovation to raise the sale price? What would be the suggestions for changes? What is the increment in the price given by each reform option?*
+
+<h3>0.1. What is a Marketplace</h3>
+<p>The Marketplace-type business model, the formal definition is, basically, it brings together people who are looking for a solution of some model with this problem, for example, which is a person who is looking for a place or a residence for this problem to travel, and on the other hand, I have people who actually own a residence and are willing to allow people from other parts of the world to come and settle in that residence.</p>
+<p>This example is the Marketplace model that are offered as an offer to people that are offered through Airbnb, which are examples to be chosen by Airbnb, which are examples to be chosen by Airbnb, it is an example used by Airbnb, it these people are selected with people who have an accommodation.</p>
+<p>The House Rocket find people who are looking to buy houses and people who like are looking to sell a houses.</p>
+
+<h2>1. Solution Strategy</h2>
+<hr>
+<p>On First Crisp Cycle.</p>
 <p>CEO requested several filters to be able to see how the company is doing!</p>
-
 <ul>
   <dl>
-    <dt>Filter data with Zipcode.</dt>
-    <dt>Filter data columns.</dt>
-    <dt>Descriptive Statistical:</dt>
-      <dd>- Total of Houses.</dd>
-      <dd>- Mean of price.</dd>
-      <dd>- Mean of sqft living.</dd>
-      <dd>- Mean of m2.</dd>
-      <dd>- Price p/ m2.</dd>
-    <dt>Map with all Houses.</dt>
-    <dt>Map with price density.</dt>
-    <dt>Check annual and daily variation.</dt>
-    <dt>House Distribution per:</dt>
-      <dd>- Per Price.</dd>
-      <dd>- Number of Bedrooms.</dd>
-      <dd>- Number of Bathrooms</dd>
-      <dd>- Number of Floors.</dd>
-      <dd>- Have Waterfront.</dd>
+    <dt>Data Cleaning & Descriptive Statistical.</dt>
+      <dd>First real step is download the dataset, import in jupyter and start in seven steps to change data types, data dimension, fillout na... At first statistic dataframe, i used simple statistic descriptions to check how my data is organized, and check, in dataset have only numerical attirbutes!!</dd>
+    <dt>Feature Engineering.</dt>
+      <dd>In the first cycle i do not builded some new features, but maked some based on Date-Time for Exploratory Data Analysis.</dd>
+    <dt>Data Filtering.</dt>
+      <dd>Just filter simple columns "ID".</dd>
+    <dt>Exploratory Data Analysis.</dt>
+      <dd>This is the principal step of this project, find houses to buy, i have analised all dataset columns on three steps, univariable, bivariable and multivariavble dataset analysis, resume, is a deep dive on dataset features.</dd>
+    <dt>Streamlit Visual App.</dt>
+      <dd>After Jupyter Notebook Analysis, i made a simple Streamlit App to CEO of House Rocket, with Maps, Plots and Filters.</dd>
   </dl>
 </ul>
 
-<h2>2. Process Insight's</h2>
+<h2>3. EDA Insight's</h2>
 <p>Some insight's to CEO during the EDA and Data Clearing.</p>
 <ol>
   <li>Waterfront properties are approximately 30% more expensive than average.</li>
@@ -38,32 +45,3 @@
   <li>YoY price of properties is approximately 5%.</li>
 </ol>
 
-<!-- <h2>3. CEO Geral Process</h2>
-<ol>
-  <li>Filter data with Zipcodes</li>
-    <ul>
-      <li>Table with all CEO filtred zipcodes.</li>
-    </ul>
-  <li>Filter data columns.</li>
-    <ul>
-      <li>Table with all selected attributes.</li>
-    </ul>
-  <li>Descriptive Statistical.</li>
-    <ul>
-      <li>Table with statistic metrics.</li>
-    </ul>
-  <li>CEO request Maps.</li>
-    <ul>
-      <li>Folium map with zipcodes.</li>
-      <li>Folium map with price density.</li>
-    </ul>
-  <li>Annual and Daily price changes.</li>
-    <ul>
-      <li>Line plot with Annual Price.</li>
-      <li>Line plot with Daily Prices.</li>
-    </ul>
-  <li>House filtred attributes.</li>
-    <ul>
-      <li>Histogram with all CEO request attributes.</li>
-    </ul>
-</ol> -->
