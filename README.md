@@ -21,7 +21,9 @@ Their main strategy is to buy homes in great locations at low prices and then la
 <p>However, the houses have many examples that make our inspiration and examples and more attractive can also influence the examples. You need to answer some questions</p>
 
 > *Which houses should the House Rocket CEO buy and at what purchase price?*
+> 
 > *Once the house is in the company's possession, when is the best time to sell it and what would the sale price be?*
+> 
 > *Should House Rocket do a renovation to raise the sale price? What would be the suggestions for changes? What is the increment in the price given by each reform option?*
 
 <h3>0.1. What is a Marketplace</h3>
