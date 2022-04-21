@@ -170,7 +170,6 @@ class HouseRocketDashboard():
 
         df_price = df.loc[df["price"] < filter_price]
 
-
         fig = px.line(x=df_year.yr_built, y=df_year.price, title="Preço / Ano de Construção",
                     color_discrete_sequence=["red"], labels={"x": "Ano de Construção", "y": "Preço",})
         fig.update_layout( plot_bgcolor='#0e1117' )
@@ -201,7 +200,6 @@ class HouseRocketDashboard():
         df_bed   = df.loc[df["bedrooms"]  <= filter_bedrooms]
         df_cond  = df.loc[df["condition"] <= filter_condition]
 
-        st.header("Atributos Físicos")
         c1, c2 = st.columns((2))
         fig = px.histogram(df_bath.bathrooms, nbins=50, title="Casas por Banheiros",
                         color_discrete_sequence=["yellow"])
@@ -253,6 +251,7 @@ class HouseRocketDashboard():
         filter_date  = st.sidebar.slider("Selecione a Data / Dia", (datetime.strptime(df["date"].min(), "%Y-%m-%d") + timedelta(days=3)), 
                                                                 datetime.strptime(df["date"].max(), "%Y-%m-%d"))
 
+        st.sidebar.header("Atributos Físicos")
         filter_floors     = st.sidebar.selectbox("Selecione o N° de Andares", sorted(set(df.floors.unique())))
         filter_bathrooms  = st.sidebar.selectbox("Selecione o N° de Banheiros", sorted(set(df.bathrooms.unique())))
         filter_bedrooms   = st.sidebar.selectbox("Selecione o N° de Quartos", sorted(set(df.bedrooms.unique())))
@@ -262,7 +261,7 @@ class HouseRocketDashboard():
         st.header("Atributos Comerciais")
         self.plot_commercial(df, filter_date, filter_year, filter_sqft, filter_price)
 
-        st.sidebar.header("Atributos Físicos")
+        st.header("Atributos Físicos")
         self.plot_features(df, filter_floors, filter_bathrooms, filter_bedrooms, filter_condition, filter_waterfront)
 
         return None
