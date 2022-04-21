@@ -35,6 +35,11 @@ Their main strategy is to buy homes in great locations at low prices and then la
 <hr>
 <h3>1.1. First CRISP Cycle.</h3>
 <p>CEO requested several filters to be able to see how the company is doing!</p>
+
+https://user-images.githubusercontent.com/75986085/164525734-eb82f6fb-c788-4113-bbf3-92b3c90fdf1a.mp4
+
+<p>Streamlit App</p>
+
 <ul>
   <dl>
     <dt>Data Cleaning & Descriptive Statistical.</dt>
@@ -56,7 +61,6 @@ Their main strategy is to buy homes in great locations at low prices and then la
   <li>Waterfront properties are approximately 30% more expensive than average.</li>
   
 ![waterfront](https://user-images.githubusercontent.com/75986085/164233298-af60d3c6-6194-42cb-8498-35fb6f042b17.png)
-
   
   <li>With more than two floors, properties are approximately 5% more expensives than average.</li>
   
@@ -68,6 +72,5 @@ Their main strategy is to buy homes in great locations at low prices and then la
 
 ![year](https://user-images.githubusercontent.com/75986085/164233446-54be2ba8-23f2-4a3a-a277-08230361beee.png)
 
-  
 </ol>
 
