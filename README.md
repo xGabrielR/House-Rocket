@@ -24,7 +24,11 @@ Their main strategy is to buy homes in great locations at low prices and then la
 > 
 > *Once the house is in the company's possession, when is the best time to sell it and what would the sale price be?*
 > 
-> *Should House Rocket do a renovation to raise the sale price? What would be the suggestions for changes? What is the increment in the price given by each reform option?*
+> *Should House Rocket do a renovation to raise the sale price? 
+> 
+> What would be the suggestions for changes? 
+> 
+> What is the increment in the price given by each reform option?*
 
 <h3>0.1. What is a Marketplace</h3>
 <p>The Marketplace-type business model, the formal definition is, basically, it brings together people who are looking for a solution of some model with this problem, for example, which is a person who is looking for a place or a residence for this problem to travel, and on the other hand, I have people who actually own a residence and are willing to allow people from other parts of the world to come and settle in that residence.</p>
