@@ -15,7 +15,7 @@
 
 <h2>0. Bussiness Problem</h2>
 <hr>
-<p>House Rocket bussiness model is purchasing & reselling properties located on Seattle USA on digital app..</p>
+<p>House Rocket bussiness model is purchasing & reselling properties located on Seattle USA on digital app.</p>
 <p>The CEO of House Rocket wants to maximize the company's revenue by finding good business opportunities.
 Their main strategy is to buy homes in great locations at low prices and then later resell them at higher prices. The greater the difference between buying and selling, the greater the company's profit and therefore the greater its revenue.</p>
 <p>However, the houses have many examples that make our inspiration and examples and more attractive can also influence the examples. You need to answer some questions</p>
