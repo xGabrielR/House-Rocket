@@ -5,7 +5,7 @@
 <h2>Summary</h2>
 <hr>
 
-- [0. Bussiness Problem](#0-bussiness-problem)
+- [0. Business Problem](#0-bussiness-problem)
   - [0.1. What is a Marketplace](#01-what-is-a-marketplace)
   
 - [1. Solution Strategy](#1-solution-strategy)
@@ -13,7 +13,7 @@
 
 - [2. Exploratory Data Analysis](#2-exploratory-data-analysis)
 
-<h2>0. Bussiness Problem</h2>
+<h2>0. Business Problem</h2>
 <hr>
 <p>House Rocket bussiness model is purchasing & reselling properties located on Seattle USA on digital app.</p>
 <p>The CEO of House Rocket wants to maximize the company's revenue by finding good business opportunities.
